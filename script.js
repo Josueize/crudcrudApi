@@ -6,6 +6,7 @@ let data = [
 function readAll() {
     var tableData = document.querySelector(".table_data");
     var elements = '';
+    
 
     data.map(obj => (
         elements += `<tr>   
@@ -36,3 +37,18 @@ function delet(id) {
      readAll();
     }
 
+    fetch("https://crudcrud.com/api/4757c7ef9ec545e09e9be5425c0e35d2/tarefa")
+    .then(resposta => {
+        if (!resposta.ok) {
+            throw new Error('Erro na requisicao');
+        }
+        return resposta.json();
+    })
+    .then(data => console.log(data))
+    .catch(error => console.error('Erro:', error));
+
+Item.innerHTML = `${obj.name} - ${obj.email}`;
+
+document.getElementById
+
+readAll();

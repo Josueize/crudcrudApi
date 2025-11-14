@@ -49,6 +49,14 @@ function delet(id) {
 
 Item.innerHTML = `${obj.name} - ${obj.email}`;
 
-document.getElementById
+fetch("https://crudcrud.com/api/4757c7ef9ec545e09e9be5425c0e35d2/tarefa", {
+method: 'POST',
+headers: {
+    'Content-type' : 'application/json'
+},
+body: JSON.stringify(obj)
+});
+
+
 
 readAll();

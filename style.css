@@ -1,20 +1,35 @@
+*{margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: sans-serif;
+}
+
 .container {
+    width: 80%;
     display: flex;
+    margin: 0 auto;
     justify-content: center;
+    align-items: center;
     height: 100vh;
     background-color: rgb(2, 17, 30);
 }
 
 .form_container {
     margin-top: 20px;
-    width: 40vw;
+    width: 20vw;
     border-radius: 10px;
     height: 80vh;
-    padding: 10px;
+    padding: 20px;
     background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: auto;
+
+    form input{
+        width: 80%;
+        margin: 10px 0;
+    }
 }
 
 form input {
@@ -39,7 +54,8 @@ table {
 
 .update_form {
 display: none;
-} 
+}
 
-
-
+button :hover {
+    background-color: darkgrey;
+}

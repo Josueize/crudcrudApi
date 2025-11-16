@@ -4,32 +4,35 @@ let data = [
 ];
 
 function readAll() {
-    var tableData = document.querySelector(".table_data");
-    var elements = '';
-    
+    const tableData =document.querySelector(".table_data");
+    let elements = '';
 
-    data.map(obj => (
-        elements += `<tr>   
-            <td>${obj.name}</td>   
-            <td>${obj.email}</td>   
-            <td>                
-                <button onclick={delet(${obj.id})}>Delete</button>
-            </td>    
-        </tr>`      
-    ))
+    data.forEach(obj => {
+        elements += `<tr>
+        <td>${obj.name}</td>
+        <td>${obj.email}</td>
+        <td><button onclick="delet(${obj.id})">Delete</button></td>
+        </tr>`;
+        
+    });
 
     tableData.innerHTML = elements;
     
 }
 
 function create() {
-    var name = document.querySelector(".name").value;
-    var email = document.querySelector(".email").value;
-    var obj = {id: 3, name: name, email: email};
+    const name = document.querySelector(".name").value;
+    const email = document.querySelector(".email").value;
+
+    const newId = data.length ? 
+    Math.max(...data.map(d =>d.id)) + 1 : 1;        
+    const obj ={id:newId, name:name, email:email};
+
     data.push(obj);
     readAll();
+
     document.querySelector(".name").value = "";
-    var email = document.querySelector(".email").value = "";
+    document.querySelector(".email").value = "";
 }
 
 function delet(id) {
@@ -37,7 +40,7 @@ function delet(id) {
      readAll();
     }
 
-    fetch("https://crudcrud.com/api/4757c7ef9ec545e09e9be5425c0e35d2/tarefa")
+    fetch(" https://crudcrud.com/api/4a9b919764884250b8a6039bb2ec2d92/registra")
     .then(resposta => {
         if (!resposta.ok) {
             throw new Error('Erro na requisicao');
@@ -49,7 +52,7 @@ function delet(id) {
 
 Item.innerHTML = `${obj.name} - ${obj.email}`;
 
-fetch("https://crudcrud.com/api/4757c7ef9ec545e09e9be5425c0e35d2/tarefa", {
+fetch(" https://crudcrud.com/api/4a9b919764884250b8a6039bb2ec2d92/registra", {
 method: 'POST',
 headers: {
     'Content-type' : 'application/json'

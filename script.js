@@ -3,7 +3,7 @@ let data = [
     {id: 2, name: "mandy", email: "mandy02@gmail.com"},
 ];
 
-function readAll() {
+function data() {
     const tableData =document.querySelector(".table_data");
     let elements = '';
 
@@ -23,13 +23,14 @@ function readAll() {
 function create() {
     const name = document.querySelector(".name").value;
     const email = document.querySelector(".email").value;
+    
 
     const newId = data.length ? 
     Math.max(...data.map(d =>d.id)) + 1 : 1;        
     const obj ={id:newId, name:name, email:email};
 
-    data.push(obj);
-    readAll();
+    data.GET(obj);
+    data();
 
     document.querySelector(".name").value = "";
     document.querySelector(".email").value = "";
@@ -37,10 +38,10 @@ function create() {
 
 function delet(id) {
     data = data.filter( d => d.id !== id);
-     readAll();
+     data();
     }
 
-    fetch(" https://crudcrud.com/api/4a9b919764884250b8a6039bb2ec2d92/registra")
+    fetch("https://crudcrud.com/api/dbf824ebfd9741fd98322d158d46c16e/registro ")
     .then(resposta => {
         if (!resposta.ok) {
             throw new Error('Erro na requisicao');
@@ -52,8 +53,8 @@ function delet(id) {
 
 Item.innerHTML = `${obj.name} - ${obj.email}`;
 
-fetch(" https://crudcrud.com/api/4a9b919764884250b8a6039bb2ec2d92/registra", {
-method: 'POST',
+fetch(" https://crudcrud.com/api/dbf824ebfd9741fd98322d158d46c16e/registro", {
+method: 'GET',
 headers: {
     'Content-type' : 'application/json'
 },
@@ -62,4 +63,4 @@ body: JSON.stringify(obj)
 
 
 
-readAll();
+data();

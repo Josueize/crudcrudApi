@@ -41,26 +41,50 @@ function delet(id) {
      data();
     }
 
-    fetch("https://crudcrud.com/api/dbf824ebfd9741fd98322d158d46c16e/registro ")
-    .then(resposta => {
-        if (!resposta.ok) {
-            throw new Error('Erro na requisicao');
-        }
-        return resposta.json();
+    fetch("https://crudcrud.com/api/de6f3110eda643dd9d82b62d4db7b0dc/projecto ")
+    .then(resposta => resposta.json())
+    .then(data => {
+
+        data.forEach(obj => {
+            const item = document.createElement("li");
+            item.textContent = `${obj.name} - ${obj.email}`;
+            item.innerHTML += `button onclick="delet(${obj.id})">Delete</button>`;
+            document.getElementById("listaNomes").appendChild(item);
+        })
     })
-    .then(data => console.log(data))
-    .catch(error => console.error('Erro:', error));
 
-Item.innerHTML = `${obj.name} - ${obj.email}`;
+    document.getElementById("listaNomes").addEventListener("click", ()=>{
 
-fetch(" https://crudcrud.com/api/dbf824ebfd9741fd98322d158d46c16e/registro", {
-method: 'GET',
-headers: {
-    'Content-type' : 'application/json'
-},
-body: JSON.stringify(obj)
-});
+        const descricao = document.getElementById("listaNomes").value;
+
+        fetch("https://crudcrud.com/api/de6f3110eda643dd9d82b62d4db7b0dc/projecto",{
+
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({name: descricao})
+        })
+        .then(resposta => resposta.json())
+        .then((data) => {
+            const item = document.createElement("li");
+            item.textContent = `${obj.name} - ${obj.email}`;
+            item.innerHTML += `button onclick="delet(${obj.id})">Delete</button>`;
+            document.getElementById("listaNomes").appendChild(item);
+
+            const myButton = document.createElement('create');
+            myButton.id = 'createButton';
+            myButton.innerText = 'Create';
+
+            document.body.appendChild(myButton);
+            myButton.addEventListener('click', function() {
+            const descricao = document.getElementById("listaNomes").value;
+           
 
 
+            })
 
-data();
+        })
+    })
+        
+

@@ -1,4 +1,4 @@
-const API_BASE = 'https://crudcrud.com/api/8f6b5bfaa86641398f9119fef54057f8/projects';
+const API_BASE = 'https://crudcrud.com/api/4eabbb88389e4c30973aeb7bf0062b5c';
 const RESOURCE = 'clientes';
 
 function data() {
@@ -18,7 +18,7 @@ async function fetchData() {
     }
 }
 
-fucntion populateTable(items) {
+function populateTable(items) {
     const tableData = document.querySelector('.table_data');
    if(!tableData) return;
    const rows = items.map(item => `
@@ -79,7 +79,7 @@ async function create(){
 async function deleteItem(id) {
     if(!confirm('Confirma exclusao?')) return;
     try {
-        const res = await fetch(`${ÁPI_BASE}/${RESOURCE}/${id}`, {method: 'DELETE' });
+        const res = await fetch(`${API_BASE}/${RESOURCE}/${id}`, {method: 'DELETE' });
         if(!res.ok) throw new Error('Delete failed');
         await fetchData();
     }catch (err) {
